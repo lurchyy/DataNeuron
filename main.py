@@ -1,15 +1,14 @@
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-import pandas as pd
-df = pd.read_csv('data.csv')
 
 model = SentenceTransformer('distilbert-base-nli-mean-tokens')
+txt1 = str(input("Enter the first text: "))
+txt2 = str(input("Enter the second text: "))
+txt1_embedding = model.encode([txt1])
+txt2_embedding = model.encode([txt2])
 
-text1_embeddings = model.encode(df['text1'].tolist())
-text2_embeddings = model.encode(df['text2'].tolist())
 
-similarity_scores = cosine_similarity(text1_embeddings, text2_embeddings)
+similarity = cosine_similarity(txt1_embedding, txt2_embedding)[0][0]
 
-for i in range(len(df)):
-    print(f"Similarity between text1[{i}] and text2[{i}]: {similarity_scores[i][i]}")
-df['similarity_score'] = similarity_scores.diagonal()
+print(f"Similarity Score:{similarity:.2f}")
+
