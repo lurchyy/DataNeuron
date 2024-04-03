@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Heroku Flask Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <h1 id="tittle">Semantic Text Similarity</h1>
+        <nav>
+            <p> <B>Request Body: </B>{"text1:"{{ context.txt1 }}, "text2:"{{ context.txt2 }}}</p>
+            <p> <B>Response Body: </B>{“similarity score:” {{ context.sim }} }</p>
+                
+            
+        </nav>
+            </body>
+</html>
